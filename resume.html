@@ -35,12 +35,13 @@ li{margin-bottom:5px}
 .proj{margin-bottom:14px}
 .proj h3{font-size:1rem}
 .proj .stack{font-size:.85rem;color:var(--accent);margin-bottom:4px}
+@page{margin:12mm}
 @media print{
   body{background:#fff}
   .toolbar{display:none}
   .page{box-shadow:none;margin:0;max-width:none;padding:24px 30px}
-  h2{margin:18px 0 8px}
-  .job,.proj{page-break-inside:avoid}
+  h2{margin:18px 0 8px;break-after:avoid;page-break-after:avoid}
+  .job,.proj{page-break-inside:avoid;break-inside:avoid}
 }
 </style>
 </head>
@@ -61,17 +62,19 @@ li{margin-bottom:5px}
 
   <h2>Professional Summary</h2>
   <p>Full Stack Developer & AI Engineer with 1.5+ years of experience building secure, scalable fintech
-  backends and real-time computer-vision systems. Strong expertise in Django, Django REST Framework, FastAPI,
-  PostgreSQL, Celery, Redis, and API security, plus hands-on AI/ML experience fine-tuning and deploying
-  <b>YOLO11</b> object-detection models, <b>ANPR (number-plate recognition)</b>, and <b>face-recognition</b>
-  systems on GPU (NVIDIA T4 / CUDA) and CPU production environments. Experienced in NBFC systems, mandate
-  processing, and RBI-compliant financial workflows.</p>
+  backends, real-time computer-vision systems, and <b>LLM-powered NLP solutions</b>. Strong expertise in Django,
+  Django REST Framework, FastAPI, PostgreSQL, Celery, Redis, and API security, plus hands-on AI/ML experience
+  fine-tuning and deploying <b>YOLO11</b> object-detection models, <b>ANPR (number-plate recognition)</b>,
+  <b>face-recognition</b> systems, and an ontology-driven <b>NLP-to-SQL engine</b> (SQLCoder, Hugging Face)
+  on GPU (NVIDIA T4 / CUDA) and CPU production environments. Experienced in NBFC systems, mandate processing,
+  and RBI-compliant financial workflows.</p>
 
   <h2>Core Technical Skills</h2>
   <table class="skills-table">
     <tr><td>Languages & Backend</td><td>Python, Django, Django REST Framework, FastAPI, REST APIs, WebSockets, SQL</td></tr>
     <tr><td>AI / Computer Vision</td><td>PyTorch, YOLO11 / Ultralytics, OpenCV, SAHI (tiled inference), PaddleOCR (ANPR), InsightFace (face recognition), ONNX Runtime, model fine-tuning & transfer learning, dataset labelling (COCO), model evaluation (mAP, precision/recall)</td></tr>
-    <tr><td>Databases & Messaging</td><td>PostgreSQL, MySQL, MongoDB, Redis, Celery, RabbitMQ, Kafka</td></tr>
+    <tr><td>NLP / LLM Engineering</td><td>NLP-to-SQL, SQLCoder, Hugging Face, LLM integration, ontology-driven semantic mapping, confidence-based routing, query validation</td></tr>
+    <tr><td>Databases & Messaging</td><td>PostgreSQL, SQL Server, MySQL, MongoDB, Redis, Celery, RabbitMQ, Kafka</td></tr>
     <tr><td>Security & Fintech</td><td>JWT Authentication, AES-GCM & RSA encryption, API security, eNACH, UPI Autopay, OTP flows, webhook handling</td></tr>
     <tr><td>Infra & Tools</td><td>GPU training (NVIDIA T4, CUDA), Docker, Linux, SSH remote deployment, RTSP/IP cameras, Git, GitHub, Postman, Power BI</td></tr>
   </table>
@@ -93,7 +96,18 @@ li{margin-bottom:5px}
   </div>
 
   <div class="job">
-    <div class="job-head"><h3>Junior Python Developer</h3><span class="date">Jan 2025 – May 2026</span></div>
+    <div class="job-head"><h3>Junior Python Developer</h3><span class="date">Jan 2026 – May 2026</span></div>
+    <div class="org">Invader Technologies, Gurugram</div>
+    <ul>
+      <li>Built a scalable <b>NLP-to-SQL engine</b> supporting 15+ SQL Server databases with 300+ tables each, enabling natural-language querying for enterprise users.</li>
+      <li>Integrated <b>SQLCoder</b> with a custom ontology engine, achieving approximately 80% query accuracy through semantic scoring and confidence-based routing.</li>
+      <li>Implemented secure, validated, and optimized cross-database SQL generation with deterministic join planning and strict query validation.</li>
+      <li>Developed AI-powered RESTful APIs using FastAPI and Django to support enterprise data workflows and analytics pipelines.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head"><h3>Junior Python Developer</h3><span class="date">Jan 2025 – Jan 2026</span></div>
     <div class="org">Prayas Financial Services Pvt. Ltd. (NBFC), Gurugram</div>
     <ul>
       <li>Developed and maintained backend fintech services using Django REST Framework.</li>
@@ -113,6 +127,16 @@ li{margin-bottom:5px}
       <li>Multi-camera AI surveillance system that detects dangerous activity, reads vehicle number plates, and raises real-time alerts for site operators.</li>
       <li>Fine-tuned a 6-class YOLO11 detector on self-labelled data; deployed GPU and CPU inference services with FastAPI.</li>
       <li>Event-driven architecture with Kafka/Redpanda, Redis allow/deny checks, and ANPR camera webhook adapters.</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <h3>Enterprise Ontology-Driven NLP-to-SQL Engine</h3>
+    <div class="stack">Tech: FastAPI, PostgreSQL, SQL Server, NLP, Hugging Face, LLMs, SQLCoder</div>
+    <ul>
+      <li>Architected a scalable NLP-to-SQL engine with ontology-driven semantic mapping and intelligent schema understanding for enterprise data access.</li>
+      <li>Achieved approximately 80% query accuracy using a hybrid architecture combining semantic scoring, aggregation detection, and confidence-based routing.</li>
+      <li>Generated secure, validated cross-database SQL across 15+ databases (300+ tables each) with deterministic join planning.</li>
     </ul>
   </div>
 
