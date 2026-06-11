@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sachin Kumar — Resume</title>
+<style>
+:root{--ink:#1a1d29;--muted:#4a4f63;--accent:#4338ca;--line:#d8dbe6}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Calibri,'Segoe UI',Arial,sans-serif;color:var(--ink);background:#eef0f5;line-height:1.45;font-size:14.5px}
+.toolbar{position:sticky;top:0;z-index:9;display:flex;gap:12px;justify-content:center;padding:12px;
+  background:#1a1d29}
+.toolbar button,.toolbar a{font-family:inherit;font-size:.9rem;font-weight:700;padding:9px 22px;border-radius:8px;
+  border:none;cursor:pointer;text-decoration:none}
+.toolbar .dl{background:#4338ca;color:#fff}
+.toolbar .back{background:transparent;color:#aab;border:1px solid #445}
+.page{max-width:830px;margin:26px auto;background:#fff;padding:48px 56px;box-shadow:0 8px 40px rgba(0,0,0,.15)}
+h1{font-size:2rem;letter-spacing:.5px}
+.contact{color:var(--muted);font-size:.92rem;margin-top:4px}
+.contact a{color:var(--accent);text-decoration:none}
+h2{font-size:1.02rem;text-transform:uppercase;letter-spacing:1.6px;color:var(--accent);
+  border-bottom:2px solid var(--line);padding-bottom:5px;margin:26px 0 12px}
+p,li{color:var(--muted)}
+b,strong{color:var(--ink)}
+ul{padding-left:20px}
+li{margin-bottom:5px}
+.job{margin-bottom:16px}
+.job-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap}
+.job-head h3{font-size:1.05rem}
+.job-head .date{font-size:.88rem;color:var(--accent);font-weight:700;white-space:nowrap}
+.job .org{font-style:italic;color:var(--muted);font-size:.95rem;margin-bottom:6px}
+.skills-table{width:100%;border-collapse:collapse;font-size:.92rem}
+.skills-table td{padding:4px 8px 4px 0;vertical-align:top;color:var(--muted)}
+.skills-table td:first-child{font-weight:700;color:var(--ink);white-space:nowrap;width:200px}
+.proj{margin-bottom:14px}
+.proj h3{font-size:1rem}
+.proj .stack{font-size:.85rem;color:var(--accent);margin-bottom:4px}
+@media print{
+  body{background:#fff}
+  .toolbar{display:none}
+  .page{box-shadow:none;margin:0;max-width:none;padding:24px 30px}
+  h2{margin:18px 0 8px}
+  .job,.proj{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <a class="back" href="index.html">← Portfolio</a>
+  <button class="dl" onclick="window.print()">⬇ Download as PDF</button>
+</div>
+
+<div class="page">
+  <h1>Sachin Kumar</h1>
+  <div class="contact">
+    Gurugram, Haryana, India · +91 7496050014 · <a href="mailto:sachinmachra2001@gmail.com">sachinmachra2001@gmail.com</a><br>
+    <a href="https://linkedin.com/in/sachin-machra">linkedin.com/in/sachin-machra</a> ·
+    <a href="https://github.com/Sachin-Machra">github.com/Sachin-Machra</a>
+  </div>
+
+  <h2>Professional Summary</h2>
+  <p>Full Stack Developer & AI Engineer with 1.5+ years of experience building secure, scalable fintech
+  backends and real-time computer-vision systems. Strong expertise in Django, Django REST Framework, FastAPI,
+  PostgreSQL, Celery, Redis, and API security, plus hands-on AI/ML experience fine-tuning and deploying
+  <b>YOLO11</b> object-detection models, <b>ANPR (number-plate recognition)</b>, and <b>face-recognition</b>
+  systems on GPU (NVIDIA T4 / CUDA) and CPU production environments. Experienced in NBFC systems, mandate
+  processing, and RBI-compliant financial workflows.</p>
+
+  <h2>Core Technical Skills</h2>
+  <table class="skills-table">
+    <tr><td>Languages & Backend</td><td>Python, Django, Django REST Framework, FastAPI, REST APIs, WebSockets, SQL</td></tr>
+    <tr><td>AI / Computer Vision</td><td>PyTorch, YOLO11 / Ultralytics, OpenCV, SAHI (tiled inference), PaddleOCR (ANPR), InsightFace (face recognition), ONNX Runtime, model fine-tuning & transfer learning, dataset labelling (COCO), model evaluation (mAP, precision/recall)</td></tr>
+    <tr><td>Databases & Messaging</td><td>PostgreSQL, MySQL, MongoDB, Redis, Celery, RabbitMQ, Kafka</td></tr>
+    <tr><td>Security & Fintech</td><td>JWT Authentication, AES-GCM & RSA encryption, API security, eNACH, UPI Autopay, OTP flows, webhook handling</td></tr>
+    <tr><td>Infra & Tools</td><td>GPU training (NVIDIA T4, CUDA), Docker, Linux, SSH remote deployment, RTSP/IP cameras, Git, GitHub, Postman, Power BI</td></tr>
+  </table>
+
+  <h2>Professional Experience</h2>
+
+  <div class="job">
+    <div class="job-head"><h3>Full Stack Developer & AI Engineer</h3><span class="date">May 2026 – Present</span></div>
+    <div class="org">Nirjai Technologies, Gurugram</div>
+    <ul>
+      <li>Building an end-to-end smart surveillance platform performing real-time danger detection and ANPR on live RTSP camera feeds from remote sites.</li>
+      <li>Fine-tuned <b>YOLO11</b> object-detection models on custom-labelled COCO datasets (person, tractor, farm trailer, JCB, car, motorbike); trained on NVIDIA T4 GPUs over remote SSH.</li>
+      <li>Built the ANPR pipeline — YOLO plate detection followed by <b>PaddleOCR</b> recognition — served via warm-start <b>FastAPI</b> inference servers for low latency.</li>
+      <li>Applied <b>SAHI tiled inference</b> to reliably detect small/distant objects in high-resolution frames.</li>
+      <li>Designed dual deployment paths: cloud GPU inference servers and an on-prem Windows CPU fallback for uninterrupted 24/7 operation.</li>
+      <li>Developed <b>Face-Guard</b>, an InsightFace-based face-recognition access-control system with HTTPS mobile web UI, enrollment tooling, and alert snapshot logging.</li>
+      <li>Built dataset labelling/merge tooling and evaluation scripts (mAP, per-class precision/recall) to drive iterative model improvement.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head"><h3>Junior Python Developer</h3><span class="date">Jan 2025 – May 2026</span></div>
+    <div class="org">Prayas Financial Services Pvt. Ltd. (NBFC), Gurugram</div>
+    <ul>
+      <li>Developed and maintained backend fintech services using Django REST Framework.</li>
+      <li>Integrated secure third-party APIs for eNACH, UPI Autopay, and banking operations.</li>
+      <li>Implemented background task processing using Celery and Redis, improving system reliability.</li>
+      <li>Worked with PostgreSQL for optimized data storage and retrieval of financial records.</li>
+      <li>Participated in code reviews, API testing, and agile stand-ups to ensure high code quality.</li>
+    </ul>
+  </div>
+
+  <h2>Projects</h2>
+
+  <div class="proj">
+    <h3>NIRJAI Smart Surveillance — Danger Detection & ANPR Platform</h3>
+    <div class="stack">Tech: YOLO11, PyTorch, SAHI, PaddleOCR, FastAPI, OpenCV, Redis, Kafka, NVIDIA T4/CUDA, RTSP</div>
+    <ul>
+      <li>Multi-camera AI surveillance system that detects dangerous activity, reads vehicle number plates, and raises real-time alerts for site operators.</li>
+      <li>Fine-tuned a 6-class YOLO11 detector on self-labelled data; deployed GPU and CPU inference services with FastAPI.</li>
+      <li>Event-driven architecture with Kafka/Redpanda, Redis allow/deny checks, and ANPR camera webhook adapters.</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <h3>Face-Guard — Face Recognition Access Control</h3>
+    <div class="stack">Tech: InsightFace (buffalo_l), OpenCV, ONNX Runtime, Python, TLS</div>
+    <ul>
+      <li>Real-time webcam access control: enrolled team members are recognized, unknown faces trigger DANGER alerts with snapshot logging.</li>
+      <li>HTTPS server with mobile web UI so phones can act as guard-point cameras on the LAN.</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <h3>Automated eNACH Mandate & Presentment Management System</h3>
+    <div class="stack">Tech: Django REST Framework, PostgreSQL, ZipNach API, AES-GCM, RSA</div>
+    <ul>
+      <li>Built a secure backend system for automated mandate creation, OTP validation, and status tracking.</li>
+      <li>Implemented end-to-end encrypted data exchange and secure storage for sensitive financial data.</li>
+      <li>Ensured compliance with financial security and data integrity standards.</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <h3>UPI Autopay Integration & Presentment System</h3>
+    <div class="stack">Tech: Django REST Framework, PostgreSQL, ZipNach API, IDFC Bank APIs</div>
+    <ul>
+      <li>Developed APIs for UPI mandate creation, verification, and real-time synchronization.</li>
+      <li>Implemented OTP verification, webhook handling, and secure communication with banking partners.</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <h3>AI Voicebot Master — Automated Calling & Dashboard System</h3>
+    <div class="stack">Tech: Django REST Framework, Celery, Redis, PostgreSQL, Power BI</div>
+    <ul>
+      <li>Developed an AI calling-bot system with real-world calling-data monitoring and analytics.</li>
+      <li>Designed dynamic dashboards visualizing call status, success rate, drop rate, agent/bot performance, and campaign insights.</li>
+    </ul>
+  </div>
+
+  <h2>Education</h2>
+  <div class="job">
+    <div class="job-head"><h3>Bachelor of Technology (B.Tech) — Computer Science (Artificial Intelligence)</h3><span class="date">2025</span></div>
+    <div class="org">Swami Keshvanand Institute of Technology, Jaipur · CGPA: 8.7/10</div>
+  </div>
+</div>
+
+</body>
+</html>

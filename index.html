@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sachin Kumar — Python Backend & AI/CV Engineer</title>
+<meta name="description" content="Portfolio of Sachin Kumar — Python Backend Developer & AI/Computer Vision Engineer. Fintech systems, YOLO11 surveillance AI, ANPR, face recognition.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05060f;
+  --bg2:#0a0d1f;
+  --card:rgba(255,255,255,.04);
+  --border:rgba(255,255,255,.09);
+  --text:#e8eaf6;
+  --muted:#8b93b8;
+  --cyan:#22d3ee;
+  --violet:#a78bfa;
+  --pink:#f472b6;
+  --green:#34d399;
+  --grad:linear-gradient(95deg,#22d3ee,#a78bfa 55%,#f472b6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Sora',sans-serif;
+  overflow-x:hidden;
+  line-height:1.6;
+}
+::selection{background:rgba(167,139,250,.4)}
+::-webkit-scrollbar{width:9px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:linear-gradient(#22d3ee,#a78bfa);border-radius:99px}
+
+/* ============ 3D canvas ============ */
+#bg3d{position:fixed;inset:0;z-index:0;pointer-events:none}
+.vignette{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 40%,transparent 40%,rgba(5,6,15,.75) 100%)}
+
+/* ============ layout ============ */
+.wrap{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:0 28px}
+section{padding:110px 0 30px}
+
+/* ============ nav ============ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 38px;
+  background:rgba(5,6,15,.55);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.logo{font-weight:800;font-size:1.15rem;letter-spacing:.5px;text-decoration:none;color:var(--text)}
+.logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:flex;gap:26px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.86rem;font-weight:600;transition:color .25s}
+.nav-links a:hover{color:var(--cyan)}
+.nav-cta{
+  padding:8px 18px;border-radius:99px;border:1px solid rgba(34,211,238,.45);
+  color:var(--cyan)!important;transition:all .25s!important;
+}
+.nav-cta:hover{background:rgba(34,211,238,.12);box-shadow:0 0 22px rgba(34,211,238,.35)}
+.burger{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+
+/* ============ hero ============ */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:90px}
+.hero .tag{
+  display:inline-flex;align-items:center;gap:9px;width:fit-content;
+  font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--green);
+  border:1px solid rgba(52,211,153,.35);padding:7px 16px;border-radius:99px;
+  background:rgba(52,211,153,.07);margin-bottom:26px;
+}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(52,211,153,.6)}50%{box-shadow:0 0 0 7px rgba(52,211,153,0)}}
+.hero h1{font-size:clamp(2.6rem,7vw,5.2rem);font-weight:800;line-height:1.07;letter-spacing:-1.5px}
+.hero h1 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.typer{
+  margin-top:20px;font-family:'JetBrains Mono',monospace;
+  font-size:clamp(1rem,2.4vw,1.35rem);color:var(--cyan);min-height:1.8em;
+}
+.typer::after{content:'▌';animation:blink 1s step-start infinite;color:var(--violet)}
+@keyframes blink{50%{opacity:0}}
+.hero p.sub{max-width:640px;margin-top:18px;color:var(--muted);font-size:1.02rem}
+.hero-btns{display:flex;gap:16px;margin-top:38px;flex-wrap:wrap}
+.btn{
+  padding:14px 30px;border-radius:14px;font-weight:700;font-size:.92rem;
+  text-decoration:none;transition:transform .25s,box-shadow .25s;cursor:pointer;border:none;
+}
+.btn-primary{background:var(--grad);color:#05060f;box-shadow:0 8px 30px rgba(167,139,250,.35)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(167,139,250,.5)}
+.btn-ghost{border:1px solid var(--border);color:var(--text);background:var(--card);backdrop-filter:blur(8px)}
+.btn-ghost:hover{transform:translateY(-3px);border-color:var(--cyan);color:var(--cyan)}
+.hero-stats{display:flex;gap:44px;margin-top:60px;flex-wrap:wrap}
+.stat .num{font-size:1.9rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .lbl{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.4px}
+
+/* ============ section headers ============ */
+.sec-head{margin-bottom:54px}
+.sec-head .kicker{font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:.82rem;letter-spacing:2px}
+.sec-head h2{font-size:clamp(1.9rem,4.5vw,3rem);font-weight:800;letter-spacing:-1px;margin-top:8px}
+.sec-head h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ============ about ============ */
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:46px;align-items:start}
+.glass{
+  background:var(--card);border:1px solid var(--border);border-radius:22px;
+  backdrop-filter:blur(12px);padding:34px;
+}
+.about-grid p{color:var(--muted);margin-bottom:16px;font-size:.98rem}
+.about-grid p strong{color:var(--text)}
+.code-card{font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.9;overflow:auto}
+.code-card .k{color:var(--pink)}.code-card .s{color:var(--green)}.code-card .v{color:var(--violet)}.code-card .c{color:#525a7d}
+
+/* ============ skills ============ */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:22px}
+.skill-card{transition:transform .35s,border-color .35s;position:relative;overflow:hidden}
+.skill-card:hover{transform:translateY(-6px);border-color:rgba(34,211,238,.4)}
+.skill-card h3{font-size:1.02rem;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.skill-card .ico{font-size:1.3rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;padding:6px 12px;border-radius:8px;
+  background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--muted);
+  transition:all .25s;
+}
+.chip:hover{color:var(--cyan);border-color:rgba(34,211,238,.5);background:rgba(34,211,238,.08)}
+.chip.hot{color:var(--green);border-color:rgba(52,211,153,.4);background:rgba(52,211,153,.06)}
+
+/* ============ timeline / experience ============ */
+.timeline{position:relative;padding-left:34px}
+.timeline::before{content:'';position:absolute;left:8px;top:6px;bottom:6px;width:2px;
+  background:linear-gradient(#22d3ee,#a78bfa,#f472b6)}
+.t-item{position:relative;margin-bottom:42px}
+.t-item::before{content:'';position:absolute;left:-32px;top:8px;width:14px;height:14px;border-radius:50%;
+  background:var(--bg);border:3px solid var(--cyan);box-shadow:0 0 14px rgba(34,211,238,.6)}
+.t-item .when{font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--green)}
+.t-item h3{font-size:1.18rem;margin:6px 0 2px}
+.t-item .org{color:var(--violet);font-weight:600;font-size:.92rem;margin-bottom:12px}
+.t-item ul{list-style:none}
+.t-item li{color:var(--muted);font-size:.92rem;margin-bottom:8px;padding-left:20px;position:relative}
+.t-item li::before{content:'▹';position:absolute;left:0;color:var(--cyan)}
+
+/* ============ projects ============ */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:26px}
+.proj{
+  position:relative;padding:32px;border-radius:22px;background:var(--card);
+  border:1px solid var(--border);backdrop-filter:blur(12px);
+  transition:transform .15s ease-out,border-color .3s,box-shadow .3s;
+  transform-style:preserve-3d;will-change:transform;
+  display:flex;flex-direction:column;
+}
+.proj:hover{border-color:rgba(167,139,250,.5);box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.proj.featured{grid-column:1/-1}
+.proj .badge{
+  position:absolute;top:22px;right:24px;font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  padding:5px 12px;border-radius:99px;letter-spacing:1px;
+}
+.badge.new{background:rgba(52,211,153,.12);color:var(--green);border:1px solid rgba(52,211,153,.4)}
+.badge.fin{background:rgba(244,114,182,.1);color:var(--pink);border:1px solid rgba(244,114,182,.35)}
+.proj .picon{font-size:2rem;margin-bottom:16px}
+.proj h3{font-size:1.25rem;margin-bottom:4px;padding-right:90px}
+.proj .role{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--cyan);margin-bottom:14px}
+.proj p{color:var(--muted);font-size:.91rem;margin-bottom:12px}
+.proj ul{list-style:none;margin-bottom:18px}
+.proj li{color:var(--muted);font-size:.87rem;margin-bottom:7px;padding-left:18px;position:relative}
+.proj li::before{content:'▹';position:absolute;left:0;color:var(--violet)}
+.proj .chips{margin-top:auto}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 36px}
+@media(max-width:820px){.feat-grid{grid-template-columns:1fr}}
+
+/* ============ education / contact ============ */
+.edu-flex{display:flex;gap:26px;flex-wrap:wrap}
+.edu-flex .glass{flex:1;min-width:300px}
+.edu-flex h3{margin-bottom:6px}
+.edu-flex .org{color:var(--violet);font-size:.9rem;font-weight:600}
+.edu-flex .meta{color:var(--muted);font-size:.85rem;margin-top:8px}
+
+.contact-box{text-align:center;padding:70px 34px}
+.contact-box p{color:var(--muted);max-width:540px;margin:14px auto 34px}
+.contact-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+
+footer{position:relative;z-index:2;text-align:center;padding:34px;color:#3d4566;
+  font-family:'JetBrains Mono',monospace;font-size:.74rem;border-top:1px solid var(--border);margin-top:60px}
+
+/* ============ reveal animation ============ */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:760px){
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;
+    background:rgba(5,6,15,.97);padding:24px;border-bottom:1px solid var(--border)}
+  .nav-links.open{display:flex}
+  .burger{display:block}
+  .about-grid{grid-template-columns:1fr}
+  section{padding:80px 0 20px}
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg3d"></canvas>
+<div class="vignette"></div>
+
+<nav>
+  <a class="logo" href="#home">SACHIN<span>.dev</span></a>
+  <button class="burger" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <a class="nav-cta" href="resume.html" target="_blank">Resume ↗</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero wrap" id="home">
+  <div class="tag"><span class="dot"></span>Open to opportunities · Gurugram, India</div>
+  <h1>Sachin Kumar<br><span class="grad">Backend × AI Engineer</span></h1>
+  <div class="typer" id="typer"></div>
+  <p class="sub">I build secure fintech backends and real-time computer-vision systems —
+  from RBI-compliant eNACH mandate pipelines to GPU-trained YOLO11 surveillance AI that
+  detects danger, reads number plates, and recognizes faces in live video.</p>
+  <div class="hero-btns">
+    <a class="btn btn-primary" href="#projects">View Projects</a>
+    <a class="btn btn-ghost" href="resume.html" target="_blank">Download Resume</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="num">1.5+</div><div class="lbl">Years Experience</div></div>
+    <div class="stat"><div class="num">6+</div><div class="lbl">Production Projects</div></div>
+    <div class="stat"><div class="num">2</div><div class="lbl">Domains · Fintech + AI/CV</div></div>
+    <div class="stat"><div class="num">8.7</div><div class="lbl">B.Tech CGPA (AI)</div></div>
+  </div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="wrap">
+  <div class="sec-head reveal"><div class="kicker">// 01. ABOUT</div><h2>From fintech APIs to <em>real-time AI</em></h2></div>
+  <div class="about-grid">
+    <div class="reveal">
+      <p>I'm a <strong>Python engineer</strong> who started in fintech — building Django REST
+      services for an NBFC handling <strong>eNACH mandates, UPI Autopay, and bank integrations</strong>
+      with end-to-end AES-GCM/RSA encryption and RBI-compliant workflows.</p>
+      <p>Then I went deep into <strong>AI & computer vision</strong>: I built a smart surveillance
+      platform that fine-tunes <strong>YOLO11 on custom-labelled data</strong> (trained on NVIDIA T4 GPUs),
+      detects dangerous activity near farm sites, performs <strong>ANPR with PaddleOCR + SAHI tiled
+      inference</strong>, and runs a face-recognition access-control system with InsightFace.</p>
+      <p>I care about systems that are <strong>secure, observable, and actually deployed</strong> —
+      Celery queues that don't drop jobs, inference servers that survive bad RTSP frames, and
+      encryption that holds up to audit.</p>
+    </div>
+    <div class="glass code-card reveal">
+<pre><span class="c"># sachin.py</span>
+<span class="k">class</span> <span class="v">SachinKumar</span>:
+    role     = <span class="s">"Backend + AI/CV Engineer"</span>
+    location = <span class="s">"Gurugram, IN"</span>
+    fintech  = [<span class="s">"eNACH"</span>, <span class="s">"UPI Autopay"</span>, <span class="s">"NBFC"</span>]
+    ai_cv    = [<span class="s">"YOLO11"</span>, <span class="s">"ANPR"</span>, <span class="s">"InsightFace"</span>]
+    stack    = [<span class="s">"Django"</span>, <span class="s">"FastAPI"</span>, <span class="s">"PyTorch"</span>,
+                <span class="s">"Celery"</span>, <span class="s">"Redis"</span>, <span class="s">"PostgreSQL"</span>]
+
+    <span class="k">def</span> <span class="v">ship</span>(self, idea):
+        <span class="k">return</span> secure(scalable(idea))</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills" class="wrap">
+  <div class="sec-head reveal"><div class="kicker">// 02. SKILLS</div><h2>Tools I <em>ship</em> with</h2></div>
+  <div class="skills-grid">
+    <div class="glass skill-card reveal">
+      <h3><span class="ico">🐍</span>Languages & Backend</h3>
+      <div class="chips">
+        <span class="chip">Python</span><span class="chip">Django</span><span class="chip">Django REST Framework</span>
+        <span class="chip hot">FastAPI</span><span class="chip">REST APIs</span><span class="chip">WebSockets</span>
+        <span class="chip">JWT Auth</span><span class="chip">SQL</span>
+      </div>
+    </div>
+    <div class="glass skill-card reveal">
+      <h3><span class="ico">🤖</span>AI / Computer Vision</h3>
+      <div class="chips">
+        <span class="chip hot">YOLO11 / Ultralytics</span><span class="chip hot">PyTorch</span>
+        <span class="chip hot">OpenCV</span><span class="chip hot">SAHI (tiled inference)</span>
+        <span class="chip hot">PaddleOCR (ANPR)</span><span class="chip hot">InsightFace</span>
+        <span class="chip hot">ONNX Runtime</span><span class="chip hot">Model Fine-tuning</span>
+        <span class="chip hot">Dataset Labelling · COCO</span>
+      </div>
+    </div>
+    <div class="glass skill-card reveal">
+      <h3><span class="ico">🗄️</span>Data & Messaging</h3>
+      <div class="chips">
+        <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">MongoDB</span>
+        <span class="chip">Redis</span><span class="chip">Celery</span><span class="chip">RabbitMQ</span>
+        <span class="chip">Kafka</span>
+      </div>
+    </div>
+    <div class="glass skill-card reveal">
+      <h3><span class="ico">🔐</span>Security & Fintech</h3>
+      <div class="chips">
+        <span class="chip">AES-GCM</span><span class="chip">RSA</span><span class="chip">API Security</span>
+        <span class="chip">eNACH / NPCI</span><span class="chip">UPI Autopay</span>
+        <span class="chip">Webhook Handling</span><span class="chip">OTP Flows</span>
+      </div>
+    </div>
+    <div class="glass skill-card reveal">
+      <h3><span class="ico">☁️</span>Infra & DevOps</h3>
+      <div class="chips">
+        <span class="chip hot">GPU Training (NVIDIA T4 · CUDA)</span><span class="chip">Docker</span>
+        <span class="chip">Linux</span><span class="chip">SSH / Remote Deploy</span>
+        <span class="chip">Git · GitHub</span><span class="chip">Postman</span>
+        <span class="chip hot">RTSP / IP Cameras</span>
+      </div>
+    </div>
+    <div class="glass skill-card reveal">
+      <h3><span class="ico">📊</span>Analytics</h3>
+      <div class="chips">
+        <span class="chip">Power BI</span><span class="chip">Dashboarding</span>
+        <span class="chip">Model Evaluation (mAP / PR)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience" class="wrap">
+  <div class="sec-head reveal"><div class="kicker">// 03. EXPERIENCE</div><h2>Where I've <em>worked</em></h2></div>
+  <div class="timeline">
+    <div class="t-item reveal">
+      <div class="when">May 2026 — Present</div>
+      <h3>Full Stack Developer & AI Engineer</h3>
+      <div class="org">Nirjai Technologies · Gurugram</div>
+      <ul>
+        <li>Building an end-to-end smart surveillance platform: danger detection + ANPR for live RTSP camera feeds.</li>
+        <li>Fine-tuned YOLO11 on custom-labelled datasets; trained on NVIDIA T4 GPUs over remote SSH.</li>
+        <li>Built ANPR pipeline (plate detection → PaddleOCR) and served models via FastAPI with SAHI tiled inference.</li>
+        <li>Deployed both GPU (cloud) and CPU (on-prem Windows) inference paths for 24/7 operation.</li>
+        <li>Developed Face-Guard: InsightFace-based face-recognition access control with a mobile web UI.</li>
+      </ul>
+    </div>
+    <div class="t-item reveal">
+      <div class="when">Jan 2025 — May 2026</div>
+      <h3>Junior Python Developer</h3>
+      <div class="org">Prayas Financial Services Pvt. Ltd. (NBFC) · Gurugram</div>
+      <ul>
+        <li>Developed and maintained backend fintech services using Django REST Framework.</li>
+        <li>Integrated secure third-party APIs for eNACH, UPI Autopay, and banking operations.</li>
+        <li>Implemented background task processing with Celery + Redis, improving system reliability.</li>
+        <li>Optimized PostgreSQL storage and retrieval for financial records.</li>
+        <li>Participated in code reviews, API testing, and agile stand-ups.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects" class="wrap">
+  <div class="sec-head reveal"><div class="kicker">// 04. PROJECTS</div><h2>Things I've <em>built</em></h2></div>
+  <div class="proj-grid">
+
+    <div class="proj featured reveal" data-tilt>
+      <span class="badge new">NEW · FLAGSHIP</span>
+      <div class="picon">🛰️</div>
+      <h3>NIRJAI Smart Surveillance — Danger Detection & ANPR Platform</h3>
+      <div class="role">AI/CV Engineer · YOLO11 · FastAPI · NVIDIA T4</div>
+      <p>A multi-camera intelligent surveillance platform that watches live RTSP feeds from farm
+      sites, detects dangerous activity (person, tractor, farm trailer, JCB intrusions), reads
+      vehicle number plates, and raises real-time alerts.</p>
+      <div class="feat-grid">
+        <ul>
+          <li>Fine-tuned <b>YOLO11</b> detector on a custom-labelled COCO dataset (6 classes), trained on NVIDIA T4 GPU with tuned hyperparameters for transfer learning.</li>
+          <li>Built <b>ANPR pipeline</b>: plate detection (YOLO) → <b>PaddleOCR</b> recognition, with warm-start FastAPI serving for low latency.</li>
+          <li>Used <b>SAHI tiled inference</b> to catch small/distant objects in high-resolution frames.</li>
+          <li>Built custom <b>labelling & dataset-merge tooling</b> (COCO format) and evaluation scripts (mAP, per-class PR).</li>
+        </ul>
+        <ul>
+          <li>Designed dual deployment: GPU inference servers on cloud (Lightning T4 via SSH) and a CPU fallback on on-prem Windows for offline operation.</li>
+          <li>Event-driven architecture with <b>Kafka/Redpanda</b>, Redis allow/deny checks, and webhook adapters for Hikvision/Dahua ANPR cameras.</li>
+          <li>Alerting flow with severity routing and incident workflows for site operators.</li>
+        </ul>
+      </div>
+      <div class="chips">
+        <span class="chip hot">YOLO11</span><span class="chip hot">PyTorch</span><span class="chip hot">SAHI</span>
+        <span class="chip hot">PaddleOCR</span><span class="chip hot">FastAPI</span><span class="chip">OpenCV</span>
+        <span class="chip">Kafka</span><span class="chip">Redis</span><span class="chip">CUDA · T4</span><span class="chip">RTSP</span>
+      </div>
+    </div>
+
+    <div class="proj reveal" data-tilt>
+      <span class="badge new">NEW</span>
+      <div class="picon">🧑‍💻</div>
+      <h3>Face-Guard — Face Recognition Access Control</h3>
+      <div class="role">AI/CV Engineer · InsightFace · OpenCV</div>
+      <ul>
+        <li>Real-time webcam access control: enrolled team members get OK, unknown faces trigger a DANGER alert.</li>
+        <li>Built on <b>InsightFace (buffalo_l)</b> embeddings with cosine-similarity matching against an enrolled face database.</li>
+        <li>HTTPS server with self-signed TLS so phones on the LAN can stream their camera as a guard point.</li>
+        <li>Enrollment CLI, alert snapshot logging, and a mobile-friendly web UI.</li>
+      </ul>
+      <div class="chips">
+        <span class="chip hot">InsightFace</span><span class="chip hot">OpenCV</span><span class="chip">ONNX</span>
+        <span class="chip">Python</span><span class="chip">TLS</span>
+      </div>
+    </div>
+
+    <div class="proj reveal" data-tilt>
+      <span class="badge fin">FINTECH</span>
+      <div class="picon">🏦</div>
+      <h3>Automated eNACH Mandate & Presentment System</h3>
+      <div class="role">Backend Developer · DRF · ZipNach API</div>
+      <ul>
+        <li>Secure backend for automated mandate creation, OTP validation, and status tracking.</li>
+        <li>End-to-end encrypted data exchange with <b>AES-GCM + RSA</b>; secure storage for sensitive financial data.</li>
+        <li>Compliant with financial security and data-integrity standards.</li>
+      </ul>
+      <div class="chips">
+        <span class="chip">Django REST</span><span class="chip">PostgreSQL</span><span class="chip">AES-GCM</span>
+        <span class="chip">RSA</span><span class="chip">ZipNach</span>
+      </div>
+    </div>
+
+    <div class="proj reveal" data-tilt>
+      <span class="badge fin">FINTECH</span>
+      <div class="picon">💳</div>
+      <h3>UPI Autopay Integration & Presentment System</h3>
+      <div class="role">Backend Developer · DRF · IDFC Bank APIs</div>
+      <ul>
+        <li>APIs for UPI mandate creation, verification, and real-time synchronization.</li>
+        <li>OTP verification, webhook handling, and secure communication with banking partners.</li>
+      </ul>
+      <div class="chips">
+        <span class="chip">Django REST</span><span class="chip">PostgreSQL</span><span class="chip">ZipNach</span>
+        <span class="chip">IDFC APIs</span><span class="chip">Webhooks</span>
+      </div>
+    </div>
+
+    <div class="proj reveal" data-tilt>
+      <span class="badge fin">AUTOMATION</span>
+      <div class="picon">📞</div>
+      <h3>AI Voicebot Master — Calling & Dashboard System</h3>
+      <div class="role">Backend Developer · Celery · Power BI</div>
+      <ul>
+        <li>AI calling-bot system with real-world calling-data monitoring and analytics.</li>
+        <li>Dynamic dashboards for call status, success/drop rate, agent-vs-bot performance, and campaign insights.</li>
+        <li>Operational Power BI dashboards for the business team.</li>
+      </ul>
+      <div class="chips">
+        <span class="chip">Django REST</span><span class="chip">Celery</span><span class="chip">Redis</span>
+        <span class="chip">PostgreSQL</span><span class="chip">Power BI</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section id="education" class="wrap">
+  <div class="sec-head reveal"><div class="kicker">// 05. EDUCATION</div><h2>Where I <em>learned</em></h2></div>
+  <div class="edu-flex">
+    <div class="glass reveal">
+      <h3>🎓 B.Tech — Computer Science (Artificial Intelligence)</h3>
+      <div class="org">Swami Keshvanand Institute of Technology, Jaipur</div>
+      <div class="meta">Graduated 2025 · CGPA 8.7 / 10</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="wrap">
+  <div class="glass contact-box reveal">
+    <div class="kicker" style="font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:.82rem;letter-spacing:2px">// 06. CONTACT</div>
+    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:10px">Let's build something <span style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent">great</span></h2>
+    <p>Whether it's a secure fintech backend or a real-time computer-vision system,
+    I'm always up for a hard problem. My inbox is open.</p>
+    <div class="contact-links">
+      <a class="btn btn-primary" href="mailto:sachinmachra2001@gmail.com">📧 sachinmachra2001@gmail.com</a>
+      <a class="btn btn-ghost" href="tel:+917496050014">📱 +91 74960 50014</a>
+      <a class="btn btn-ghost" href="https://linkedin.com/in/sachin-machra" target="_blank">LinkedIn ↗</a>
+      <a class="btn btn-ghost" href="https://github.com/Sachin-Machra" target="_blank">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>designed & built by sachin kumar · three.js + vanilla js · © 2026</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+<script>
+/* ==================== 3D BACKGROUND ==================== */
+(function(){
+  if(!window.THREE) return;
+  const canvas = document.getElementById('bg3d');
+  const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x05060f, 0.035);
+  const camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, .1, 100);
+  camera.position.set(0, 0, 16);
+
+  /* --- starfield particles --- */
+  const N = 1600;
+  const pos = new Float32Array(N*3);
+  for(let i=0;i<N;i++){
+    pos[i*3]   = (Math.random()-0.5)*60;
+    pos[i*3+1] = (Math.random()-0.5)*40;
+    pos[i*3+2] = (Math.random()-0.5)*40;
+  }
+  const pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  const stars = new THREE.Points(pGeo, new THREE.PointsMaterial({
+    color:0x8b93d8, size:.055, transparent:true, opacity:.8, depthWrite:false}));
+  scene.add(stars);
+
+  const stars2 = new THREE.Points(pGeo.clone(), new THREE.PointsMaterial({
+    color:0x22d3ee, size:.09, transparent:true, opacity:.35, depthWrite:false}));
+  stars2.rotation.y = 2;
+  scene.add(stars2);
+
+  /* --- hero centerpiece: wireframe torus knot --- */
+  const knot = new THREE.Mesh(
+    new THREE.TorusKnotGeometry(3.1, .85, 220, 28),
+    new THREE.MeshBasicMaterial({color:0xa78bfa, wireframe:true, transparent:true, opacity:.16})
+  );
+  knot.position.set(5.5, 0.5, -2);
+  scene.add(knot);
+
+  const innerKnot = new THREE.Mesh(
+    new THREE.TorusKnotGeometry(3.1, .85, 110, 14),
+    new THREE.MeshBasicMaterial({color:0x22d3ee, wireframe:true, transparent:true, opacity:.10})
+  );
+  innerKnot.position.copy(knot.position);
+  innerKnot.scale.setScalar(1.18);
+  scene.add(innerKnot);
+
+  /* --- floating icosahedrons --- */
+  const floaters = [];
+  const geos = [new THREE.IcosahedronGeometry(.8,0), new THREE.OctahedronGeometry(.7,0), new THREE.TetrahedronGeometry(.8,0)];
+  const cols = [0x22d3ee, 0xf472b6, 0x34d399, 0xa78bfa];
+  for(let i=0;i<14;i++){
+    const m = new THREE.Mesh(
+      geos[i%geos.length],
+      new THREE.MeshBasicMaterial({color:cols[i%cols.length], wireframe:true, transparent:true, opacity:.28})
+    );
+    m.position.set((Math.random()-0.5)*34, (Math.random()-0.5)*22, -4-Math.random()*14);
+    m.userData = {rx:(Math.random()-.5)*.012, ry:(Math.random()-.5)*.012,
+                  fy:Math.random()*Math.PI*2, fs:.3+Math.random()*.6};
+    floaters.push(m); scene.add(m);
+  }
+
+  /* --- mouse parallax + scroll camera --- */
+  let mx=0, my=0, tx=0, ty=0;
+  addEventListener('mousemove', e=>{
+    mx = (e.clientX/innerWidth - .5)*2;
+    my = (e.clientY/innerHeight - .5)*2;
+  });
+
+  function resize(){
+    renderer.setSize(innerWidth, innerHeight);
+    camera.aspect = innerWidth/innerHeight;
+    camera.updateProjectionMatrix();
+  }
+  addEventListener('resize', resize); resize();
+
+  const clock = new THREE.Clock();
+  (function animate(){
+    requestAnimationFrame(animate);
+    const t = clock.getElapsedTime();
+    const scroll = scrollY / Math.max(1, document.body.scrollHeight - innerHeight);
+
+    tx += (mx - tx)*.04; ty += (my - ty)*.04;
+    camera.position.x = tx*1.6;
+    camera.position.y = -ty*1.1 - scroll*4;
+    camera.lookAt(0, -scroll*4, 0);
+
+    stars.rotation.y  = t*.018;
+    stars2.rotation.y = -t*.012 + 2;
+    knot.rotation.x = t*.14; knot.rotation.y = t*.2;
+    innerKnot.rotation.x = -t*.1; innerKnot.rotation.y = -t*.16;
+
+    for(const f of floaters){
+      f.rotation.x += f.userData.rx; f.rotation.y += f.userData.ry;
+      f.position.y += Math.sin(t*f.userData.fs + f.userData.fy)*.004;
+    }
+    renderer.render(scene, camera);
+  })();
+})();
+
+/* ==================== typewriter ==================== */
+(function(){
+  const lines = [
+    "Python Backend Developer",
+    "AI & Computer Vision Engineer",
+    "YOLO11 · ANPR · Face Recognition",
+    "Django · FastAPI · Celery · Redis",
+    "Secure Fintech APIs · eNACH · UPI"
+  ];
+  const el = document.getElementById('typer');
+  let li=0, ci=0, del=false;
+  (function tick(){
+    const line = lines[li];
+    el.textContent = line.slice(0, ci);
+    if(!del){
+      if(++ci > line.length){ del=true; return setTimeout(tick, 1700); }
+    } else {
+      if(--ci === 0){ del=false; li=(li+1)%lines.length; }
+    }
+    setTimeout(tick, del? 28 : 62);
+  })();
+})();
+
+/* ==================== scroll reveal ==================== */
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ==================== 3D tilt cards ==================== */
+document.querySelectorAll('[data-tilt]').forEach(card=>{
+  card.addEventListener('mousemove', e=>{
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left)/r.width - .5;
+    const y = (e.clientY - r.top)/r.height - .5;
+    card.style.transform = `perspective(900px) rotateY(${x*7}deg) rotateX(${-y*7}deg) translateY(-4px)`;
+  });
+  card.addEventListener('mouseleave', ()=>{ card.style.transform=''; });
+});
+
+/* close mobile nav on click */
+document.querySelectorAll('.nav-links a').forEach(a=>
+  a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('open')));
+</script>
+</body>
+</html>
